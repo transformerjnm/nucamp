@@ -40,9 +40,9 @@
 
                 </div><!-- col -->
 
-                <div class="col-md-4 col-xl-2" >
+                <div class = "col-md-4 col-xl-2" >
 
-                    <a href="#reserveForm" class="btn btn-lg btn-info mt-4 " > Reserve Campsite </a>
+                    <a href = "#reserveForm" class = "btn btn-lg btn-info mt-4 " data-toggle = "tooltip" data-placement = "bottom"  data-html = "true" title = "Or call us at <br /><strong>1-206-555-1234</strong>" > Reserve Campsite </a>
 
                 </div>
 
@@ -278,6 +278,17 @@
     <script src = "node_modules/jquery/dist/jquery.slim.min.js" ></script>
     <script src = "node_modules/popper.js/dist/umd/popper.min.js" ></script>
     <script src = "node_modules/bootstrap/dist/js/bootstrap.min.js" ></script>
+
+    <!-- Tooltip jquery for bootstrap -->
+    <script>
+
+        $(function ( ) {
+
+            $( '[data-toggle="tooltip"]' ).tooltip( );
+
+        } );
+
+    </script>
 
 </body>
 
