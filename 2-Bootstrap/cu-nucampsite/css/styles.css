@@ -1,0 +1,52 @@
+/* Global styles */
+
+body{
+    font-family: "Open Sans", "sans-serif";
+   
+}
+
+h1, h2, h3 {
+    font-family: "Lobster", "cursive";
+}
+
+h2 {
+    color: #17a2b8;
+}
+
+
+/* Page Order */
+
+
+.navbar {
+    background-color: #F6F6F6;
+    
+}
+.navbar i, .navbar a {
+    transition: all .2s ease-in-out;
+    color: black
+}
+.navbar a:hover, .navbar a:focus                         {
+   transform: scale(1.2);
+}
+
+.row-content {
+    padding: 50px 0;
+    border-bottom: 1px ridge lightgrey;
+    min-width: 200px;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 1rem;
+}
+
+.carousel-item img {
+    min-height: 450px;
+    max-height: 95vh;;
+}
+
+.site-footer {
+    background-color: #F6F6F6;
+    box-shadow: 0 0 1rem 0 #cfcdcc;
+    padding: 20px 0;
+}
