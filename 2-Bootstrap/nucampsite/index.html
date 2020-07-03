@@ -42,7 +42,7 @@
 
                 <div class = "col-md-4 col-xl-2" >
 
-                    <a href = "#reserveForm" class = "btn btn-lg btn-info mt-4 " data-toggle = "tooltip" data-placement = "bottom"  data-html = "true" title = "Or call us at <br /><strong>1-206-555-1234</strong>" > Reserve Campsite </a>
+                    <a class = "btn btn-lg btn-info mt-4 " data-toggle = "modal" data-target = "#reserveModal" role="button" > Reserve Campsite </a>
 
                 </div>
 
@@ -51,6 +51,100 @@
         </div><!-- container -->
 
     </header>
+
+    <!-- reserve modal -->
+    <div id="reserveModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-lg">
+
+          <div class="modal-content">
+
+            <div class = "modal-header bg-info text-white" >
+
+                <h3>Reserve a Campsite</h3>
+                <button type = "button" class = "close" data-dismiss = "modal" > &times; </button>
+
+            </div><!-- modal header -->
+
+            <div class = "modal-body" >
+
+                <form action="" id="reserveForm" >
+
+                    <div class = "row form-group" >
+
+                        <label class="col-form-label col-sm-6" for="numCampers" >Number of Campers</label>
+
+                       <div class="col" >
+
+                        <select class="custom-select" name="numCampers" id="numCampers" >
+
+                            <option value="1" > 1 </option>
+                            <option value="2" > 2 </option>
+                            <option value="3" > 3 </option>
+                            <option value="4" > 4 </option>
+                            <option value="5" > 5 </option>
+                            <option value="6" > 6 </option>
+                         
+                        </select>
+
+                       </div><!-- col -->
+
+                    </div><!-- row -->
+
+                    <div class = "row form-group" >
+
+                        <label class="col-sm-6 col-form-label" for="date" >Date</label>
+                        <div class="col">
+
+                            <input class="form-control" type="date" id="date" name="date" placeholder="date">
+
+                        </div><!--col -->
+
+                    </div><!-- row -->
+
+                    <div class = "row form-group" >
+
+                        <label class = "col-sm-6 col-form-label" for = "campsiteType" >Campsite Type</label>
+
+                        <div id="campsiteType" class = "col btn-group btn-group-toggle" data-toggle="buttons" >
+
+                            <label for="siteTent" class="btn btn-secondary active bg-success" >
+
+                                <input value="Tent" name = "siteType" id="siteTent" type="checkbox" checked autocomplete="off"> Tent
+
+                            </label>
+
+                            <label for="siteRv" class="btn btn-secondary active bg-primary" >
+
+                                <input value="RV" name = "siteType" id="siteRv" type="checkbox" checked autocomplete="off"> RV
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row form-group">
+
+                        <div class="col">
+
+                            <button class="btn btn-secondary" data-dismiss = "modal" type="submit" >Cancel</button>
+                            <button class="btn btn-primary" type="submit" >Search</button>
+
+
+                        </div><!-- col -->
+
+                    </div><!--row -->
+
+                </form>
+           
+            </div><!-- modal body -->
+
+          </div><!-- modal content -->
+
+        </div><!-- modal dialog-->
+
+    </div><!-- reserve modal -->
 
     <nav class = "navbar navbar-expand-sm navbar-dark sticky-top" >
 
@@ -323,56 +417,9 @@
 
                 <div class="card" >
 
-                    <h3 class = "card-header bg-info text-white" >Reserve a Campsite</h3>
-
                     <div class="card-body" >
 
-                        <form action="" id="reserveForm" >
-
-                            <div class="row form-group" >
-
-                                <label class="col-form-label col-sm-6" for="numCampers" >Number of Campers</label>
-
-                               <div class="col" >
-
-                                <select class="custom-select" name="numCampers" id="numCampers" >
-
-                                    <option value="1" > 1 </option>
-                                    <option value="2" > 2 </option>
-                                    <option value="3" > 3 </option>
-                                    <option value="4" > 4 </option>
-                                    <option value="5" > 5 </option>
-                                    <option value="6" > 6 </option>
-                                 
-                                </select>
-
-                               </div><!-- col -->
-
-                            </div><!-- row -->
-
-                            <div class="row form-group" >
-
-                                <label class="col-sm-6 col-form-label" for="date" >Date</label>
-                                <div class="col">
-
-                                    <input class="form-control" type="date" id="date" name="date" placeholder="date">
-
-                                </div><!--col -->
-
-                            </div><!-- row -->
-
-                            <div class="row form-group">
-
-                                <div class="col">
-
-                                    <button class="btn btn-primary" type="submit" >Search</button>
-
-
-                                </div><!-- col -->
-
-                            </div><!--row -->
-
-                        </form>
+                      
 
                     </div> <!-- card-body -->
 
@@ -431,17 +478,6 @@
     <script src = "node_modules/jquery/dist/jquery.slim.min.js" ></script>
     <script src = "node_modules/popper.js/dist/umd/popper.min.js" ></script>
     <script src = "node_modules/bootstrap/dist/js/bootstrap.min.js" ></script>
-
-    <!-- Tooltip jquery for bootstrap -->
-    <script>
-
-        $(function ( ) {
-
-            $( '[data-toggle="tooltip"]' ).tooltip( );
-
-        } );
-
-    </script>
 
 </body>
 
