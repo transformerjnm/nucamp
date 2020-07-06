@@ -108,13 +108,13 @@
 
                         <div id="campsiteType" class = "col btn-group btn-group-toggle" data-toggle="buttons" >
 
-                            <label for="siteTent" class="btn btn-secondary active bg-success" >
+                            <label for="siteTent" class="btn btn-success active" >
 
                                 <input value="Tent" name = "siteType" id="siteTent" type="checkbox" checked autocomplete="off"> Tent
 
                             </label>
 
-                            <label for="siteRv" class="btn btn-secondary active bg-primary" >
+                            <label for="siteRv" class="btn btn-primary active" >
 
                                 <input value="RV" name = "siteType" id="siteRv" type="checkbox" checked autocomplete="off"> RV
 
@@ -130,7 +130,6 @@
 
                             <button class="btn btn-secondary" data-dismiss = "modal" type="submit" >Cancel</button>
                             <button class="btn btn-primary" type="submit" >Search</button>
-
 
                         </div><!-- col -->
 
@@ -256,6 +255,7 @@
 
     <main class = "container" >
         
+        <!-- carousal -->
         <div class = "row row-content" >
 
             <div class = "col-md-8 mx-auto" >
@@ -323,6 +323,12 @@
                         <span class = "sr-only" >Next</span>
 
                     </a>
+
+                        <button class = "btn btn-danger btn-sm" id = "carouselButton" >
+
+                            <i class = "fa fa-pause" > </i>
+
+                        </button>
 
                 </div><!-- home-carousel -->
 
@@ -411,24 +417,6 @@
 
         </div><!-- row -->
 
-        <div class="row-content row" >
-
-            <div class="col-sm-6 mx-auto" >
-
-                <div class="card" >
-
-                    <div class="card-body" >
-
-                      
-
-                    </div> <!-- card-body -->
-
-                </div><!-- card -->
-
-            </div><!-- col -->
-
-        </div><!-- row -->
-
     </main>
 
     <footer class = "site-footer" >
@@ -478,6 +466,43 @@
     <script src = "node_modules/jquery/dist/jquery.slim.min.js" ></script>
     <script src = "node_modules/popper.js/dist/umd/popper.min.js" ></script>
     <script src = "node_modules/bootstrap/dist/js/bootstrap.min.js" ></script>
+
+    <!-- carousal pause play jquery -->
+    <script>
+
+        // shorthand for $( document).ready(function() { ... });
+        $(function() {
+
+            //carousel interval 2sec
+            $( ".carousel" ).carousel( { interval: 2000 } );
+
+            //on click on carousel btn
+            $( "#carouselButton" ).click( function( ) {
+
+                //if btn child <i>(fontawsome logo) is fa-pause
+                if ( $( "#carouselButton" ).children( "i" ).hasClass( "fa-pause" ) ) {
+
+                    //pause carousel
+                    $( ".carousel" ).carousel( "pause" );
+                    //show play btn
+                    $( "#carouselButton" ).children( "i" ).removeClass( "fa-pause" );
+                    $( "#carouselButton" ).children( "i" ).addClass( "fa-play" );
+
+                } else {
+
+                    //play carousel
+                    $( ".carousel" ).carousel( "cycle" );
+                    //show pause btn
+                    $( "#carouselButton" ).children( "i" ).removeClass( "fa-play" );
+                    $( "#carouselButton" ).children( "i" ).addClass( "fa-pause" ); 
+
+                }
+
+            });
+
+        });
+
+    </script>
 
 </body>
 
