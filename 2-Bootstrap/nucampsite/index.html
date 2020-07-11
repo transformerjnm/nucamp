@@ -7,12 +7,14 @@
         <meta name = "viewport" content = "width=device-width, initial-scale=1" />
         <link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
 
-       <!-- build:css css/main.css -->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <!-- endbuild -->
+        <!-- build:css css/main.css -->
+
+            <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css" />
+            <link rel="stylesheet" href="css/styles.css" />
+
+        <!-- endbuild -->
 
         <title>NuCamp: A Better Way To Camp</title>
         
@@ -41,7 +43,7 @@
 
                 <div class = "col-md-4 col-xl-2" >
 
-                    <a class = "btn btn-lg btn-info mt-4 " data-toggle = "modal" data-target = "#reserveModal" role="button" > Reserve Campsite </a>
+                    <a class = "btn btn-lg btn-info mt-4 " id = "reserveButton" role = "button" > Reserve Campsite </a>
 
                 </div>
 
@@ -58,7 +60,7 @@
 
           <div class="modal-content">
 
-            <div class = "modal-header bg-info text-white" >
+            <div class = "modal-header" >
 
                 <h3>Reserve a Campsite</h3>
                 <button type = "button" class = "close" data-dismiss = "modal" > &times; </button>
@@ -170,7 +172,7 @@
                 <!-- opens modal -->
                 <span class = "navbar-text ml-auto" >
 
-                    <a role = "button" data-toggle = "modal" data-target = "#loginModal" >
+                    <a role = "button" id = "loginButton" >
 
                         <i class = "fa fa-sign-in" ></i> Login
 
@@ -462,12 +464,14 @@
     </footer>
 
     <!-- build:js js/main.js -->
-    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
-    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
+
+        <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+        <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="js/scripts.js"></script>
+
     <!-- endbuild -->
+
 </body>
 
 </html>
-

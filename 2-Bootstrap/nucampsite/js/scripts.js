@@ -29,4 +29,20 @@
 
     });
 
+    //Open close Modals
+
+    //login modal
+    $( '#loginButton').click( () => {
+
+        $('#loginModal').modal('toggle');
+
+    } );
+
+    //reserve button
+    $( '#reserveButton').click( () => {
+
+        $('#reserveModal').modal('toggle');
+
+    } );
+
 });
