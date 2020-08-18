@@ -10,6 +10,7 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Contact from './ContactComponent';
 import CampsiteInfo from './CampsiteInfoComponent';
+import About from './AboutComponent';
 
 class Main extends Component {
     constructor(props) {
@@ -32,11 +33,10 @@ class Main extends Component {
                 />
             );
         };
-
         /*
             match came from route state. query params in the route are stored in match.params and passed to the campsiteWithId().we named one query param campsiteID in the Route.
         */
-        const CampsiteWithId = ({match}) => {
+        const CampsiteWithId = ({ match }) => {
             return (
                 <CampsiteInfo 
                     //+ in front of match changes string to array.
@@ -50,10 +50,11 @@ class Main extends Component {
             <Fragment>
                 <Header />
                 <Switch>
-                    <Route path='/home' component={HomePage} />
-                    <Route exact path='/directory' render={() => <Directory campsites={this.state.campsites} />} />
-                    <Route exact path='/contactus' component={Contact} />
-                    <Route path='/directory/:campsiteId' component={CampsiteWithId} />
+                    <Route path='/home' component={HomePage}/>
+                    <Route exact path='/directory' render={() => <Directory campsites={this.state.campsites}/>} />
+                    <Route  path='/contactus' component={Contact}/>
+                    <Route path='/directory/:campsiteId' component={CampsiteWithId}/>
+                    <Route path='/aboutus' render={() => <About partners={this.state.partners}/> }/>
                     <Redirect to='/home' />
                 </Switch>              
                 <Footer />
@@ -63,4 +64,3 @@ class Main extends Component {
 };
 
 export default Main;
-
