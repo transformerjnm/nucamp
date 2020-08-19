@@ -94,6 +94,7 @@ class Contact extends Component {
         alert('Current state is: ' + JSON.stringify(this.state));
         event.preventDefault();
     }
+    
     render(){
         const errors = this.validate(this.state.firstName, this.state.lastName, this.state.phoneNum, this.state.email);  
         return (

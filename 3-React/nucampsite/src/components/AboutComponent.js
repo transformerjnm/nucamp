@@ -4,17 +4,16 @@ import { Link } from 'react-router-dom';
 
 function About(props) {
 
-    const RenderPartner = (props) => {
-        if(props.partner) {
-            console.log(props.partner.image);
+    const RenderPartner = ({partner}) => {
+        if(partner) {
             return (
                 <Fragment>
-                    <Media object src={ props.partner.image} alt={props.partner.name} width="150"/>
+                    <Media object src={ partner.image} alt={partner.name} width="150"/>
                     <Media body className="ml-5 mb-4">
                         <Media heading>
-                            {props.partner.name}
+                            {partner.name}
                         </Media>
-                        {props.partner.description}
+                        {partner.description}
                     </Media>
                 </Fragment>
             );            
