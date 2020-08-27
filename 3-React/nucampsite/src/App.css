@@ -40,3 +40,21 @@ h2 {
 .navbar-dark {
   background-color: #901CAD;
 }
+
+.page-enter {
+  transform: scale(.3);
+}
+
+.page-enter-active {
+  transform: scale(1);
+  transition: 400ms ease-out;
+}
+
+.page-exit {
+  transform: scale(.1);
+}
+
+.page-exit-active {
+  transform: scale(.1);
+  transition: 400ms ease-in;
+}
