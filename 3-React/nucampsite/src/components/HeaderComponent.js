@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom';
 class Header extends Component {
     constructor(props) {
         super(props);
-
         this.toggleNav = this.toggleNav.bind(this);
         this.state={
             isNavOpen: false,
@@ -34,7 +33,7 @@ class Header extends Component {
     }
 
     render() {
-        return (
+        return(
             <React.Fragment>
                 <Jumbotron fluid>
                     <div className="container">
@@ -112,7 +111,7 @@ class Header extends Component {
                 </Navbar>
             </React.Fragment>
         );
-    }
-}
+    };
+};
 
 export default Header;

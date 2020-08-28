@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Footer(props) {
-    return (
+    return(
         <footer className="site-footer">
             <div className="container">
                 <div className="row">             
@@ -30,6 +30,6 @@ function Footer(props) {
             </div>
         </footer>
     );
-}
+};
 
 export default Footer;

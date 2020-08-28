@@ -38,9 +38,8 @@ class Main extends Component {
     }
 
     render() {
-
         const HomePage = () => {
-            return (
+            return(
                 <Home
                 campsite={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
                 campsitesLoading={this.props.campsites.isLoading}
@@ -54,7 +53,7 @@ class Main extends Component {
         }
 
         const CampsiteWithId = ({match}) => {
-            return (
+            return(
                 <CampsiteInfo 
                     campsite={this.props.campsites.campsites.filter(campsite => campsite.id === +match.params.campsiteId)[0]}
                     isLoading={this.props.campsites.isLoading}
@@ -65,7 +64,8 @@ class Main extends Component {
                 />          
             );
         };
-        return (
+        
+        return(
             <Fragment>
                <Header />
                 <TransitionGroup>
@@ -75,7 +75,7 @@ class Main extends Component {
                             <Route path='/home' component={HomePage} />
                             <Route exact path='/directory' render={() => <Directory campsites={this.props.campsites} />} />
                             <Route path='/directory/:campsiteId' component={CampsiteWithId} />
-                           <Route exact path='/contactus' render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} /> } />
+                            <Route exact path='/contactus' render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} /> } />
                             <Route exact path='/aboutus' render={() => <About partners={this.props.partners} /> } />
                             <Redirect to='/home' />
                         </Switch>

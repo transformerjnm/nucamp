@@ -19,7 +19,6 @@ const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 class Contact extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             firstName: '',
             lastName: '',
@@ -35,9 +34,8 @@ class Contact extends Component {
                 email: false
             }
         };
-      
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    };
 
     handleSubmit(values) {
         console.log('Current State is: ' + JSON.stringify(values));
@@ -45,8 +43,8 @@ class Contact extends Component {
         this.props.resetFeedbackForm();
     }
     
-    render(){
-        return (
+    render() {
+        return(
             <div className="container">
                 <div className="row">
                     <div className="col">
@@ -58,7 +56,6 @@ class Contact extends Component {
                         <hr></hr>
                     </div>
                 </div>
-                
                 <div className="row row-content align-items-center">
                     <div className="col-sm-4">
                         <h5>Our Address</h5>
@@ -220,10 +217,9 @@ class Contact extends Component {
                         </Form>
                     </div>
                 </div>
-            </div>
-           
+            </div>   
         );
     };
-}
+};
 
 export default Contact;

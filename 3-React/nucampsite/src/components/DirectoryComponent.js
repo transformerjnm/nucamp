@@ -15,20 +15,20 @@ function RenderDirectoryItem({campsite}) {
             </Link>
         </Card>
     );
-}
+};
 
 function Directory(props) {
 
     const directory = props.campsites.campsites.map(campsite => {
-        return (
+        return(
             <div key={campsite.id} className="col-md-5 m-1">
                 <RenderDirectoryItem campsite={campsite} />
             </div>
         );
     });
 
-    if (props.campsites.isLoading) {
-        return (
+    if(props.campsites.isLoading) {
+        return(
             <div className="container">
                 <div className="row">
                     <Loading />
@@ -36,8 +36,8 @@ function Directory(props) {
             </div>
         );
     }
-    if (props.campsites.errMess) {
-        return (
+    if(props.campsites.errMess) {
+        return(
             <div className="container">
                 <div className="row">
                     <div className="col">
@@ -48,7 +48,7 @@ function Directory(props) {
         );
     }
 
-    return (
+    return(
         <div className="container">
             <div className="row">
                 <div className="col">
@@ -65,6 +65,6 @@ function Directory(props) {
             </div>
         </div>
     );
-}
+};
 
 export default Directory;

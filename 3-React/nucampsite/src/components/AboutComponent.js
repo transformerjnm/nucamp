@@ -25,7 +25,7 @@ function About(props) {
     };
 
     const partners = props.partners.map(partner => {
-        return (
+        return(
             <Media tag="li" key={partner.id}>
                 <RenderPartner partner={partner}/>
             </Media>
@@ -92,6 +92,6 @@ function About(props) {
             </div>
         </div>
     );
-}
+};
 
 export default About;

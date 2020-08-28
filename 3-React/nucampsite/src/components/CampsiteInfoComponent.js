@@ -30,14 +30,14 @@ let RenderCampsite = ( {campsite} ) => {
 };
 
 function RenderComments({comments, postComment, campsiteId}) {
-    if(comments){
+    if(comments) {
         return(
             <div className="col-md-5 m-1">
                 <h4>Comments</h4>
                 <Stagger in>
                     {
                         comments.map(comment => {
-                            return (
+                            return(
                                 <Fade in key={comment.id}>
                                     <div>
                                         <p>
@@ -133,8 +133,8 @@ class CommentForm extends Component {
 };
 
 function CampsiteInfo(props) {
-    if (props.isLoading) {
-        return (
+    if(props.isLoading) {
+        return(
             <div className="container">
                 <div className="row">
                     <Loading />
@@ -142,8 +142,8 @@ function CampsiteInfo(props) {
             </div>
         );
     }
-    if (props.errMess) {
-        return (
+    if(props.errMess) {
+        return(
             <div className="container">
                 <div className="row">
                     <div className="col">
@@ -153,7 +153,7 @@ function CampsiteInfo(props) {
             </div>
         );
     }
-    if (props.campsite) {
+    if(props.campsite) {
         return(
             <div className="container">
                   <div className="row">
@@ -177,7 +177,7 @@ function CampsiteInfo(props) {
             </div>               
         );
     } else {
-        return (
+        return(
             <div></div>
         );
     }
