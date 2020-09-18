@@ -12,10 +12,9 @@ const mapStateToProps = state => {
 };
 
 class Directory extends Component {
-
     static navigationOptions = {
         title: 'Directory'
-    }
+    };
 
     render() {
         const { navigate } = this.props.navigation;
