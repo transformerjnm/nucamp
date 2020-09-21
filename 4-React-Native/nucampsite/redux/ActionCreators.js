@@ -27,9 +27,27 @@ export const commentsFailed = errMess => ({
 });
 
 export const addComments = (comments) => ({
+    
     type: ActionTypes.ADD_COMMENTS,
     payload: comments
 });
+
+export const addComment = (comment) => ({
+    type: ActionTypes.ADD_COMMENT,
+    payload: comment,
+})
+
+export const postComment = (campsiteId, rating, author, text) => dispatch => {
+    var date = new Date();
+    const newComment = {
+        campsiteId,
+        rating,
+        author,
+        text,
+        date: date.toISOString()
+    };
+    setTimeout(() => {dispatch(addComment(newComment));}, 2000)
+};
 
 export const fetchCampsites = () => dispatch => {
 
