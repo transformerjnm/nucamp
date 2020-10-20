@@ -8,7 +8,7 @@ const contactRouter = require('./routes/contactus');
 const cartRouter = require('./routes/cart');
 
 const hostname = 'localhost';
-const port = 3000;
+const port = 3001;
 
 const app = express();
 app.use(morgan('dev'));
