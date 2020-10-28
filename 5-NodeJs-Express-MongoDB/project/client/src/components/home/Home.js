@@ -1,10 +1,21 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import { Row, Container } from 'reactstrap';
 import products from '../../shared/products';
 import ProductCard from '../productCard/ProductCard';
 import ContactForm from '../form/ContactForm';
 
 const Home = (props) => {
+      
+    useEffect(() => {
+        getData().then(res => console.log(res.json()));
+    }, []);
+    let getData = async () => {
+        const response = await fetch('/');
+        console.log(response);
+        const body = await response.json();
+        return body;
+    }
+    
     let getFeaturedProducts = () => {
         let bestSellers = products.filter( product => product.bestSeller === true );
         let bestSellersCards = bestSellers.map( (product) => {

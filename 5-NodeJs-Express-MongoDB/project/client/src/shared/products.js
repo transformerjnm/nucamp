@@ -55,8 +55,8 @@ let products = [
     },
 ];
 
-fetch('/')
+/*fetch('/')
 .then(response => response.json())
-.then(data => console.log(data));
+.then(data => console.log(data));*/
 
 export default products;
