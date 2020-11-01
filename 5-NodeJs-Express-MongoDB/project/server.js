@@ -17,6 +17,7 @@ if (process.env.NODE_ENV === "production") {
 }
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', homeRouter);
 //app.use('/about', aboutRouter);
 //app.use('/contact', contactRouter);
