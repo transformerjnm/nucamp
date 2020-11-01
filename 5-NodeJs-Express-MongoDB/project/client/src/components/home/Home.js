@@ -9,7 +9,7 @@ const Home = (props) => {
         getData().then(res => console.log(res));
     }, []);
     let getData = async () => {
-        const response = await fetch('/', { method: 'GET',  headers: {
+        const response = await fetch('/home', { method: 'GET',  headers: {
             "Content-Type": "application/json",
         }});
         console.log(response);

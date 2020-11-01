@@ -1,5 +1,4 @@
 const express = require('express');
-const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv/config');
@@ -15,10 +14,9 @@ const app = express();
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
-app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/', homeRouter);
+app.use('/home', homeRouter);
 //app.use('/about', aboutRouter);
 //app.use('/contact', contactRouter);
 //app.use('/cart', cartRouter);
