@@ -5,12 +5,13 @@ import ProductCard from '../productCard/ProductCard';
 import ContactForm from '../form/ContactForm';
 
 const Home = (props) => {
-      
     useEffect(() => {
-        getData().then(res => console.log(res.json()));
+        getData().then(res => console.log(res));
     }, []);
     let getData = async () => {
-        const response = await fetch('/');
+        const response = await fetch('/', { method: 'GET',  headers: {
+            "Content-Type": "application/json",
+        }});
         console.log(response);
         const body = await response.json();
         return body;
