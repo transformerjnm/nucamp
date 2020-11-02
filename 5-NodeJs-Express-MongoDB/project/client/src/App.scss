@@ -38,5 +38,6 @@ i:hover, i:focus {
     border: none;
     &:hover, &:focus {
         transform: scale(1.1);
+        background-color: green;
     }
 }

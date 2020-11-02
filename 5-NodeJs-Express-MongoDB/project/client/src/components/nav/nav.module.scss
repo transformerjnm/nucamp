@@ -21,3 +21,16 @@ nav {
 .active {
     color: $accent-color !important;
 }
+button {
+    width: 90%;
+    margin: 5%;
+}
+a:hover {
+    text-decoration: none;
+}
+@media only screen and (min-width: 600px) {
+    button {
+        width: 40%;
+        margin: 5%;
+    }
+}
