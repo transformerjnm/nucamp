@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import products from '../../shared/products';
 import {
     Row,
     Col,
@@ -16,7 +15,7 @@ const Cart = (props) => {
         array returned by props.getCartItemsID is all the id of the products that the user has added to cart.
         This function gets and returns the product data for all the item ids as an array of objects.
     */
-    let getProductsInfoById = () => {  
+   /* let getProductsInfoById = () => {  
         let cartItemsId = props.getCartItemsId();
         let customerProductsInfo = cartItemsId.map( (singleId) => {
             let item = products.filter( product => product.id === singleId)
@@ -57,10 +56,10 @@ const Cart = (props) => {
             </Fragment>
         ); 
     };
-    
+    */
     return(
         <Container>
-            {showCartProducts()}
+            {/*showCartProducts()*/}
         </Container>
     );
 };
