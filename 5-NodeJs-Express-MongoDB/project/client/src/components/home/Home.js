@@ -1,18 +1,21 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import { Row, Container } from 'reactstrap';
+import { Row, Container, Spinner } from 'reactstrap';
 import ProductCard from '../productCard/ProductCard';
 import ContactForm from '../form/ContactForm';
 
 const Home = (props) => {
     let [products, setProducts] = useState([]);
+    
     useEffect(() => {
         getData().then(res => setProducts(res));
     }, []);
+
     let getData = async () => {
         const response = await fetch('/getProduct');
         const body = await response.json();
         return body;
     }
+
     let getFeaturedProducts = () => {
         let bestSellersCards = null;
         if(products[0]){      
@@ -23,6 +26,8 @@ const Home = (props) => {
                     );
                 }
             });
+        } else {
+            return(<Spinner color="secondary" style={{width: 30,height: 30, margin: 'auto'}}/>)
         }
         return bestSellersCards;
     };
