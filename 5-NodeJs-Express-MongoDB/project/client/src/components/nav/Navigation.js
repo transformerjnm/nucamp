@@ -35,6 +35,46 @@ const Navigation = () => {
 
 	const onSubmit = event => { event.preventDefault(); toggleModal(); }
 
+	const register = () => {
+		fetch('/register', 
+		{
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				username: formValues.username,
+				password: formValues.password
+			}),
+			credentials: 'include'
+		})
+		.then( res => {
+			return res.json();
+		})
+		.then( res => console.log(res));
+	}
+
+	const login = () => {
+		fetch('/login', 
+		{
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				username: formValues.username,
+				password: formValues.password
+			}),
+			credentials: 'include'
+		})
+		.then( res => {
+			return res.json();
+		})
+		.then( res => console.log(res));
+	}
+	
 	return(  
 		<Fragment>
 			<Navbar color="light" light expand="md">
@@ -75,8 +115,8 @@ const Navigation = () => {
 							<FormFeedback className={styles.feedback}>{errors.password}</FormFeedback>
 						</FormGroup>
 						<FormGroup>
-							<Button type="submit" >Login</Button>
-							<Button type="submit" >Signup</Button>
+							<Button type="submit" onClick={login}>Login</Button>
+							<Button type="submit" onClick={register}>Signup</Button>
 						</FormGroup>
 					</Form>
 				</ModalBody>			
