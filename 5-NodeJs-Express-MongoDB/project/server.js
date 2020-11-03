@@ -1,19 +1,89 @@
 const express = require("express");
-const app = express();
-const PORT = process.env.PORT || 3001;
-const bodyParser = require('body-parser');
+const session = require('express-session');
 const mongoose = require('mongoose');
 const getProducts = require('./routes/getProducts');
+const user = require('./models/user');
+const cors = require('cors');
+const passport = require('passport');
+const passportLocal = require('passport-local').Strategy;
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcryptjs');
+const User = require("./models/user");
 require('dotenv/config');
+
+const app = express();
+const PORT = process.env.PORT || 3001;
 
 if( process.env.NODE_ENV === "production") {
     app.use(express.static('client/build'));
 }
-app.use(bodyParser.json());
+
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true,  useUnifiedTopology: true }, () => {
     console.log(" Connected to the database");
 });
+
+//middleware
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(cors({
+    origin: "http://localhost:3000", // react app location
+    credentials: true
+}))
+
+app.use(session({
+    secret: "secretcode",
+    resave: true,
+    aveUninitialized: true
+}))
+
+app.use(cookieParser("secretcode"));
+app.use(passport.initialize());
+app.use(passport.session());
+require('./passport.config')(passport);
+
+//routes
 app.use('/getProduct', getProducts);
+
+app.post('/login', (req, res, next) => {
+    passport.authenticate("local", (err, user, info) => {
+        if(err) { throw err; }
+        if(!user) { 
+            res.send("No User Exists");
+        } else {
+            req.logIn(user, err => {
+                if(err) {throw err; }
+                res.send('Successfully Authenticated');
+                console.log(req.user);
+            });
+        }
+    })(req, res, next);
+});
+
+app.post('/register', (req, res) => {
+    User.findOne({username: req.body.username}, async (err, doc) => {
+        if(err) { throw err; } 
+        else if(doc) {
+            res.send("User already Exists");
+        } else {
+            const hashPassword = await bcrypt.hash(req.body.password, 10);
+            const newUser = new User({
+                username: req.body.username,
+                password: hashPassword
+            });
+            await newUser.save();
+            res.send("User Created");
+        }
+    });
+});
+
+app.get('/user', (req, res) => {
+    console.log("/user");
+});
+
+//start server
 app.listen( PORT, () => {
     console.log(`API Server is now available on port ${PORT}`);
 });
