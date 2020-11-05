@@ -2,11 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Partner = require('../models/partner');
 const authenticate = require('../authenticate');
+const cors = require('./cors');
+
 const partnersRouter = express.Router();
 partnersRouter.use(bodyParser.json());
 
 partnersRouter.route('/')
-.get((req, res) => {
+.options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
+.get(cors.cors, (req, res) => {
     Partner.find()
     .then(partner => {
         res.statusCode = 200;
@@ -15,7 +18,7 @@ partnersRouter.route('/')
     })
     .catch(err => next(err));
 })
-.post(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
+.post(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     Partner.create(req.body)
     .then(partner => {
         console.log('Partner Created ', partner);
@@ -25,11 +28,11 @@ partnersRouter.route('/')
     })
     .catch(err => next(err));
 })
-.put(authenticate.verifyUser, authenticate.verifyAdmin, (req, res) => {
+.put(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res) => {
     res.statusCode = 403;
     res.end('PUT operation not supported on /partners');
 })
-.delete(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
+.delete(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     Partner.deleteMany()
     .then(response => {
         res.statusCode = 200;
@@ -40,7 +43,8 @@ partnersRouter.route('/')
 });
 
 partnersRouter.route('/:partnersId')
-.get((req, res) => {
+.options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
+.get(cors.cors, (req, res) => {
     Partner.findById(req.params.partnersId)
     .then(partner => {
         res.statusCode = 200;
@@ -49,11 +53,11 @@ partnersRouter.route('/:partnersId')
     })
     .catch(err => next(err));
 })
-.post(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
+.post(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     res.statusCode = 403;
     res.end("post not supported ");
 })
-.put(authenticate.verifyUser, authenticate.verifyAdmin, (req, res) => {
+.put(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res) => {
     Partner.findByIdAndUpdate(req.params.partnersId, {
         $set: req.body
     }, { new: true })
@@ -64,7 +68,7 @@ partnersRouter.route('/:partnersId')
     })
     .catch(err => next(err));
 })
-.delete(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
+.delete(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     Partner.findByIdAndDelete(req.params.partnersId)
     .then(response => {
         res.statusCode = 200;
