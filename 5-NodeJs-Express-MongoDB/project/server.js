@@ -77,6 +77,16 @@ app.post('/register', (req, res) => {
         }
     });
 });
+app.get('/logout', function (req, res){
+    req.session.destroy(function(err){
+        if(err){
+           console.log(err);
+        }else{
+            res.redirect('/');
+        }
+     });
+  
+});
 
 app.get('/user', (req, res) => {
     console.log("/user");

@@ -74,6 +74,18 @@ const Navigation = () => {
 		})
 		.then( res => console.log(res));
 	}
+	const logout = () => {
+		fetch('/logout', 
+		{
+			method: 'GET',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+		})
+		
+		.then( res => console.log(res));
+	}
 	
 	return(  
 		<Fragment>
@@ -92,6 +104,9 @@ const Navigation = () => {
 				</NavItem>
 				<NavItem>
 					<a className={styles.navLink} style={{fontSize: "1rem", display: "block", padding: "0.5rem 1rem"}} onClick={toggleModal}>Login</a>
+				</NavItem>
+				<NavItem>
+					<a className={styles.navLink} style={{fontSize: "1rem", display: "block", padding: "0.5rem 1rem"}} onClick={logout}>Logout</a>
 				</NavItem>
 				</Nav>        
 				<Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} className={styles.cart}/></Link>
