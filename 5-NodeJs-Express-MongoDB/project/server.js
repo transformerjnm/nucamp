@@ -35,7 +35,8 @@ app.use(cors({
 app.use(session({
     secret: "secretcode",
     resave: true,
-    aveUninitialized: true
+    saveUninitialized: true,
+    unset: 'destroy'
 }))
 
 app.use(cookieParser("secretcode"));
@@ -52,13 +53,26 @@ app.post('/login', (req, res, next) => {
         if(!user) { 
             res.send("No User Exists");
         } else {
-            req.logIn(user, err => {
+            req.login(user, err => {
                 if(err) {throw err; }
                 res.send('Successfully Authenticated');
+                console.log("authenticated")
                 console.log(req.user);
             });
         }
     })(req, res, next);
+});
+
+app.get('/logout',  (req, res) => {
+    console.log(req)
+    if(req.session){
+      req.logout();
+      // console.log('after logout: ', req)
+      req.session.destroy(() => {
+        console.log('session destroyed')
+      });
+      res.clearCookie('secretcode')
+    }
 });
 
 app.post('/register', (req, res) => {
@@ -77,16 +91,7 @@ app.post('/register', (req, res) => {
         }
     });
 });
-app.get('/logout', function (req, res){
-    req.session.destroy(function(err){
-        if(err){
-           console.log(err);
-        }else{
-            res.redirect('/');
-        }
-     });
-  
-});
+
 
 app.get('/user', (req, res) => {
     console.log("/user");
