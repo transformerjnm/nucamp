@@ -1,8 +1,7 @@
 {
-  "name": "georgia-gifts-react",
+  "name": "georgia-gifts",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://transformerjnm.github.io/georgia-gifts-react",
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
@@ -29,11 +28,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm install && npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

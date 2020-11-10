@@ -10,6 +10,7 @@ const Navigation = () => {
 	const [modal, setModal] = useState(false);
 	const [errors, setErrors] = useState({username: '', password: ''});
 	const [ formValues, setFormValues] = useState({username: '', password: ''});
+	//const [ authenticated,  setAuth ] = useState(false);
 
 	const toggleNav = () => setIsOpen(!isOpen);
 	const toggleModal = () => setModal(!modal);
@@ -33,7 +34,8 @@ const Navigation = () => {
 		}
 	};
 
-	const onSubmit = event => { event.preventDefault(); toggleModal(); }
+	/*
+	const onSubmit = event => { event.preventDefault(); }
 
 	const register = () => {
 		fetch('/register', 
@@ -56,6 +58,8 @@ const Navigation = () => {
 	}
 
 	const login = () => {
+		
+		toggleModal();
 		fetch('/login', 
 		{
 			method: 'POST',
@@ -70,11 +74,20 @@ const Navigation = () => {
 			credentials: 'include'
 		})
 		.then( res => {
-			return res.json();
+			console.log(res)
+			return res;
 		})
-		.then( res => console.log(res));
+		.then( res => {
+			if(res) {
+				alert('You have logged in!', authenticated);
+				setAuth(true);
+			} else {
+				alert('incorrect username or password.');
+			}
+		}).catch( err => console.log('Login failed', err));
 	}
 	const logout = () => {
+		alert('You have logged out!', authenticated);
 		fetch('/logout', 
 		{
 			method: 'GET',
@@ -83,9 +96,9 @@ const Navigation = () => {
 				'Content-Type': 'application/json'
 			},
 		})
-		
-		.then( res => console.log(res));
+		.then( res => setAuth(false));
 	}
+	*/
 	
 	return(  
 		<Fragment>
@@ -102,17 +115,20 @@ const Navigation = () => {
 				<NavItem>
 					<NavLink activeClassName={styles.active} className={styles.navLink + " nav-link"} to="/contact">Contact</NavLink>
 				</NavItem>
+				{ /*
 				<NavItem>
 					<a className={styles.navLink} style={{fontSize: "1rem", display: "block", padding: "0.5rem 1rem"}} onClick={toggleModal}>Login</a>
 				</NavItem>
 				<NavItem>
 					<a className={styles.navLink} style={{fontSize: "1rem", display: "block", padding: "0.5rem 1rem"}} onClick={logout}>Logout</a>
 				</NavItem>
+				*/}
 				</Nav>        
 				<Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} className={styles.cart}/></Link>
 			</Collapse>
 			</Navbar> 
-			<Modal isOpen={modal} toggle={toggleModal} >
+			 { /* 
+			 <Modal isOpen={modal} toggle={toggleModal} >
 				<ModalHeader className="my-1" toggle={toggleModal}>
 					<h4>Welcome!</h4>
 					<span>login or signup to get exclusive offers.</span>
@@ -136,6 +152,8 @@ const Navigation = () => {
 					</Form>
 				</ModalBody>			
 			</Modal>
+			*/}
+
 		</Fragment>
 	);
 };
